@@ -1399,7 +1399,7 @@ COPY public.faqcategories (id, lang, parent_id, name, description, user_id, grou
 -- Name: faqcategories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.faqcategories_id_seq', 1, false);
+SELECT pg_catalog.setval('public.faqcategories_id_seq', 2, true);
 
 
 --
@@ -1407,6 +1407,7 @@ SELECT pg_catalog.setval('public.faqcategories_id_seq', 1, false);
 --
 
 COPY public.faqcategory_group (category_id, group_id) FROM stdin;
+2	-1
 \.
 
 
@@ -1423,6 +1424,7 @@ COPY public.faqcategory_news (category_id, news_id) FROM stdin;
 --
 
 COPY public.faqcategory_user (category_id, user_id) FROM stdin;
+2	-1
 \.
 
 
@@ -1470,7 +1472,6 @@ SELECT pg_catalog.setval('public.faqcomments_id_comment_seq', 1, false);
 
 COPY public.faqconfig (config_name, config_value) FROM stdin;
 main.phpMyFAQToken	c6de13cfb527cd61179b9da5fe95d581
-main.urlValidateInterval	86400
 main.language	language_fr.php
 main.languageDetection	true
 main.titleFAQ	FAQ Covid-19 Taskforce
@@ -1485,7 +1486,7 @@ main.enableUserTracking	true
 main.enableAdminLog	true
 main.enableCategoryRestrictions	true
 main.referenceURL	http://localhost/FAQ-COVID
-main.enableWysiwygEditor	
+main.urlValidateInterval	86400
 main.templateSet	default
 main.dateFormat	d-m-Y H:i
 main.enableWysiwygEditorFrontend	true
@@ -1498,6 +1499,13 @@ main.enableMarkdownEditor	true
 main.enableSmartAnswering	true
 main.enableSendToFriend	true
 main.enableAutoUpdateHint	true
+mail.remoteSMTP	true
+mail.remoteSMTPServer	smtp.gmail.com
+mail.remoteSMTPUsername	faq.covid@gmail.com
+mail.remoteSMTPPassword	projetfaqin3
+mail.remoteSMTPPort	465
+mail.remoteSMTPEncryption	SSL
+main.enableWysiwygEditor	
 records.maxAttachmentSize	100000
 records.disableAttachments	true
 records.numberOfRecordsPerPage	10
@@ -1539,12 +1547,6 @@ socialnetworks.twitterConsumerKey
 socialnetworks.twitterConsumerSecret	
 socialnetworks.twitterAccessTokenKey	
 socialnetworks.twitterAccessTokenSecret	
-mail.remoteSMTP	true
-mail.remoteSMTPServer	smtp.gmail.com
-mail.remoteSMTPUsername	faq.covid@gmail.com
-mail.remoteSMTPPassword	smtp.gmail.com
-mail.remoteSMTPPort	465
-mail.remoteSMTPEncryption	SSL
 ldap.ldap_mapping.username	samAccountName
 ldap.ldap_mapping.mail	mail
 ldap.ldap_mapping.memberOf	
@@ -1607,7 +1609,7 @@ COPY public.faqdata_group (record_id, group_id) FROM stdin;
 -- Name: faqdata_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.faqdata_id_seq', 1, false);
+SELECT pg_catalog.setval('public.faqdata_id_seq', 1, true);
 
 
 --
@@ -1873,6 +1875,30 @@ COPY public.faqsessions (sid, user_id, ip, "time") FROM stdin;
 2	-1	::1	1597028123
 3	-1	::1	1597028123
 4	1	::1	1597028129
+5	-1	::1	1597057257
+6	1	::1	1597057259
+7	-1	::1	1597057276
+8	-1	::1	1597057282
+9	-1	::1	1597057282
+10	1	::1	1597057288
+11	1	::1	1597057293
+12	-1	::1	1597057294
+13	1	::1	1597057465
+14	1	::1	1597057580
+15	1	::1	1597057586
+16	-1	::1	1597057586
+17	3	::1	1597057633
+18	3	::1	1597057638
+19	-1	::1	1597057638
+20	2	::1	1597057958
+21	2	::1	1597057989
+22	2	::1	1597057993
+23	-1	::1	1597057993
+24	-1	::1	1597057999
+25	1	::1	1597058003
+26	1	::1	1597058018
+27	1	::1	1597058018
+28	1	::1	1597058018
 \.
 
 
@@ -1880,7 +1906,7 @@ COPY public.faqsessions (sid, user_id, ip, "time") FROM stdin;
 -- Name: faqsessions_sid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.faqsessions_sid_seq', 4, true);
+SELECT pg_catalog.setval('public.faqsessions_sid_seq', 28, true);
 
 
 --
@@ -5214,8 +5240,14 @@ SELECT pg_catalog.setval('public.faqtags_tagging_id_seq', 1, false);
 --
 
 COPY public.faquser (user_id, login, session_id, session_timestamp, ip, account_status, last_login, auth_source, member_since, remember_me, success, is_superadmin, login_attempts) FROM stdin;
--1	anonymous	\N	1597028087	\N	protected	\N	\N	20200810045447	\N	1	0	0
-1	brondon	6h3lgmmt730raqibsngs4nqujh	1597028633	::1	protected	20200810045705	local	20200810045447	\N	1	0	0
+-1	anonymous	\N	1597028087	\N	protected	\N	\N	20200810045447	\N	0	0	0
+3	bill	\N	1597057633	::1	active	20200810130713	local	20200810130616	\N	1	0	0
+4	adrian	\N	1597057718	\N	active	\N	\N	20200810130838	\N	1	0	0
+5	rita	\N	1597057769	\N	active	\N	\N	20200810130929	\N	1	0	0
+6	fabrice	\N	1597057814	\N	active	\N	\N	20200810131014	\N	1	0	0
+7	user0	\N	1597057867	\N	active	\N	\N	20200810131107	\N	1	0	0
+2	scofield	\N	1597057958	::1	active	20200810131138	local	20200810130408	\N	1	0	0
+1	brondon	fn6ga0ji91giavgpm4mn4rh31c	1597058003	::1	protected	20200810131323	local	20200810045447	\N	1	0	0
 \.
 
 
@@ -5285,6 +5317,271 @@ COPY public.faquser_right (user_id, right_id) FROM stdin;
 1	51
 1	52
 1	53
+2	1
+2	2
+2	3
+2	4
+2	5
+2	6
+2	7
+2	8
+2	9
+2	10
+2	11
+2	12
+2	13
+2	14
+2	15
+2	16
+2	17
+2	18
+2	19
+2	20
+2	21
+2	22
+2	23
+2	24
+2	25
+2	26
+2	27
+2	28
+2	29
+2	30
+2	31
+2	32
+2	33
+2	34
+2	35
+2	36
+2	37
+2	38
+2	39
+2	40
+2	41
+2	42
+2	43
+2	44
+2	45
+2	46
+2	47
+2	48
+2	49
+2	50
+2	51
+2	52
+2	53
+3	1
+3	2
+3	3
+3	4
+3	5
+3	6
+3	7
+3	8
+3	9
+3	10
+3	11
+3	12
+3	13
+3	14
+3	15
+3	16
+3	17
+3	18
+3	19
+3	20
+3	21
+3	22
+3	23
+3	24
+3	25
+3	26
+3	27
+3	28
+3	29
+3	30
+3	31
+3	32
+3	33
+3	34
+3	35
+3	36
+3	37
+3	38
+3	39
+3	40
+3	41
+3	42
+3	43
+3	44
+3	45
+3	46
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+3	53
+4	1
+4	2
+4	3
+4	4
+4	5
+4	6
+4	7
+4	8
+4	9
+4	10
+4	11
+4	12
+4	13
+4	14
+4	15
+4	16
+4	17
+4	18
+4	19
+4	20
+4	21
+4	22
+4	23
+4	24
+4	25
+4	26
+4	27
+4	28
+4	29
+4	30
+4	31
+4	32
+4	33
+4	34
+4	35
+4	36
+4	37
+4	38
+4	39
+4	40
+4	41
+4	42
+4	43
+4	44
+4	45
+4	46
+4	47
+4	48
+4	49
+4	50
+4	51
+4	52
+4	53
+5	1
+5	2
+5	3
+5	4
+5	5
+5	6
+5	7
+5	8
+5	9
+5	10
+5	11
+5	12
+5	13
+5	14
+5	15
+5	16
+5	17
+5	18
+5	19
+5	20
+5	21
+5	22
+5	23
+5	24
+5	25
+5	26
+5	27
+5	28
+5	29
+5	30
+5	31
+5	32
+5	33
+5	34
+5	35
+5	36
+5	37
+5	38
+5	39
+5	40
+5	41
+5	42
+5	43
+5	44
+5	45
+5	46
+5	47
+5	48
+5	49
+5	50
+5	51
+5	52
+5	53
+6	1
+6	2
+6	3
+6	4
+6	5
+6	6
+6	7
+6	8
+6	9
+6	10
+6	11
+6	12
+6	13
+6	14
+6	15
+6	16
+6	17
+6	18
+6	19
+6	20
+6	21
+6	22
+6	23
+6	24
+6	25
+6	26
+6	27
+6	28
+6	29
+6	30
+6	31
+6	32
+6	33
+6	34
+6	35
+6	36
+6	37
+6	38
+6	39
+6	40
+6	41
+6	42
+6	43
+6	44
+6	45
+6	46
+6	47
+6	48
+6	49
+6	50
+6	51
+6	52
+6	53
 \.
 
 
@@ -5292,7 +5589,7 @@ COPY public.faquser_right (user_id, right_id) FROM stdin;
 -- Name: faquser_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.faquser_user_id_seq', 2, false);
+SELECT pg_catalog.setval('public.faquser_user_id_seq', 7, true);
 
 
 --
@@ -5309,6 +5606,12 @@ SELECT pg_catalog.setval('public.faquser_user_id_seq1', 1, false);
 COPY public.faquserdata (user_id, last_modified, display_name, email) FROM stdin;
 1	20200810045447	Brondon Nono	brondonnono3@gmail.com
 -1	20200810045447	Anonymous User	
+2	20200810130408	Nana Andre	faq.covid@gmail.com
+3	20200810130616	Bill	billDjoumkam99@gmail.com
+4	20200810130848	Adrian	biegain@gmail.com
+5	20200810130929	Rita	roscane@gmail.com
+6	20200810131014	Fabrice	fabrice@gmail.com
+7	20200810131107	utilisateur_test	user0@gmail.com
 \.
 
 
@@ -5326,6 +5629,12 @@ SELECT pg_catalog.setval('public.faquserdata_user_id_seq', 1, false);
 COPY public.faquserlogin (login, pass, domain) FROM stdin;
 brondon	ebddbc0c2ffc38a555def5f8c4c8de4d4ad73ef6561624577ca659c1a074b1da	
 anonymous	9807faa62b4eb55af74c85542a6a77c8cdb982d0311b3d69adddd7300518ff8c	
+scofield	bc9a9e0d6054d8a0031814f9c9dd201a7b0d9b72f4bc3043ce742a918bf57a4a	
+bill	64015cc9341b937fe9ac7197d05f43a7fa9de237ba621bd17a0d52c3ec2ff6f4	
+adrian	26634cbf9a4cdb45d8ad4ee0260a78d3f1c289562a3245a56360c0a77d2448ef	
+rita	615a55ae494bfedd099bcce6199aa0c4ea3e17837b709f5c53a3db7bbdfc4b06	
+fabrice	845516f71d6d71caa429591156749f9f14f12d30307b799889b15cdfcde74f5b	
+user0	18f3373a7bb91d118cee1a36c20f2625d63e21dcb39219873294b8b9d25d58e4	
 \.
 
 

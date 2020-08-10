@@ -224,15 +224,15 @@ switch ($action) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title><?= $faqConfig->get('main.titleFAQ'); ?> - powered by phpMyFAQ <?= System::getVersion() ?></title>
+  <title><?= $faqConfig->get('main.titleFAQ'); ?> </title>
   <base href="<?= $faqSystem->getSystemUri($faqConfig) ?>admin/">
 
   <meta name="description" content="Only Chuck Norris can divide by zero.">
-  <meta name="author" content="phpMyFAQ Team">
+  <meta name="author" content="Brondon Nono">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="application-name" content="phpMyFAQ <?= $faqConfig->get('main.currentVersion'); ?>">
-  <meta name="copyright" content="(c) 2001-<?= date('Y') ?> phpMyFAQ Team">
-  <meta name="publisher" content="phpMyFAQ Team">
+  <meta name="application-name" content="FAQ-COVID19">
+  <meta name="copyright" content="(c) <?= date('Y') ?> Scofield">
+  <meta name="publisher" content="Universite de Dschang">
   <meta name="robots" content="<?= $faqConfig->get('seo.metaTagsAdmin') ?>">
   <meta name="phpmyfaq-config-autosave-seconds" content="<?= $faqConfig->get('records.autosaveSecs') ?>">
 
@@ -261,13 +261,12 @@ switch ($action) {
 
     <li>
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+          <i class="fa fa-home"> </i>
         </div>
-        <div class="sidebar-brand-text mx-4">phpMyFAQ <?= System::getVersion() ?></div>
+        <div class="sidebar-brand-text mx-4">Accueil Du Site</div>
       </a>
     </li>
-
     <li>
       <hr class="sidebar-divider my-0">
     </li>

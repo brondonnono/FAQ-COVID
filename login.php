@@ -23,7 +23,14 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
 $loginMessage = '';
 
 if (!is_null($error)) {
-    $loginMessage = '<div class="alert alert-danger" role="alert">' . $error . '</div>';
+    $loginMessage = sprintf(
+        '<p class="alert alert-danger alert-dismissible fade show mt-3">%s%s</p>',
+        '<button type="button" class="close" data-dismiss="alert">'.
+        '<span aria-hidden="true">&times;</span>'.
+        '</button>',
+        $error
+    );
+    //$loginMessage = '<div class="alert alert-danger" role="alert">' . $error . '</div>';
 }
 
 try {

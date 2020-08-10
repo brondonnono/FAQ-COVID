@@ -1326,4 +1326,4 @@ $LANG_CONF['mail.remoteSMTPPort'] = [0 => 'input', 1 => 'SMTP server port'];
 $LANG_CONF['mail.remoteSMTPEncryption'] = [0 => 'input', 1 => 'SMTP server encryption'];
 $PMF_LANG['ad_record_faq'] = 'Question and answer';
 $PMF_LANG['ad_record_permissions'] = 'Permissions';
-$PMF_LANG['loginPageMessage'] = 'Log in to ';
+$PMF_LANG['loginPageMessage'] = 'Log in to '; 

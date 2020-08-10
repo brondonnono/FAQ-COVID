@@ -493,7 +493,7 @@ shuffle($keywordsArray);
 $keywords = implode(',', $keywordsArray);
 
 if (!is_null($error)) {
-    $loginMessage = '<p class="error">' . $error . '</p>';
+    $loginMessage = $error;
 } else {
     $loginMessage = '';
 }
@@ -529,8 +529,7 @@ $tplMainPage = [
     'languageBox' => $PMF_LANG['msgLanguageSubmit'],
     'renderUri' => $renderUri,
     'switchLanguages' => LanguageHelper::renderSelectLanguage($faqLangCode, true),
-    'copyright' => 'powered with ❤️ and ☕️ by <a href="https://www.phpmyfaq.de" target="_blank">phpMyFAQ</a> ' .
-        $faqConfig->get('main.currentVersion'),
+    'copyright' => '(c) Université de Dschang, 2020 ',
     'registerUser' => $faqConfig->get('security.enableRegistration') ? '<a href="?action=register">' .
         $PMF_LANG['msgRegistration'] . '</a>' : '',
     'sendPassword' => '<a href="?action=password">' . $PMF_LANG['lostPassword'] . '</a>',

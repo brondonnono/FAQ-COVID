@@ -48,22 +48,15 @@ $faqSession = new Session($faqConfig);
     </div>
   </div>
 </div>
-
-<?php if (version_compare($faqConfig->getCurrentVersion(), System::getVersion(), '<')): ?>
+<!--zone d'alert
   <section class="row mb-3">
     <div class="col-12 p-2">
       <div class="card border-left-danger shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Attention!</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">
-                The phpMyFAQ version number stored in your database (<?= $faqConfig->getCurrentVersion() ?>) is lower
-                than the version number of the installed application (<?= System::getVersion() ?>), please update
-                <a href="../setup/update.php" class="alert-link">your installation here</a> to avoid an unintended
-                behaviour.
-              </div>
-            </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Attention!</div>
+                </div>
             <div class="col-auto">
               <i class="fa fa-exclamation-triangle fa-3x text-danger"></i>
             </div>
@@ -72,7 +65,7 @@ $faqSession = new Session($faqConfig);
       </div>
     </div>
   </section>
-<?php endif; ?>
+  -->
 
 <section class="row">
   <div class="container-fluid p-2">
@@ -149,10 +142,6 @@ $faqSession = new Session($faqConfig);
                 <em><?= $faqTableInfo[Database::getTablePrefix() . 'faquser'] - 1; ?></em>
               </span>
             </a>
-            <a target="_blank" href="https://itunes.apple.com/app/phpmyfaq/id977896957" class="list-group-item">
-              <i aria-hidden="true" class="fa fa-apple"></i> Available on the App Store
-              <span class="float-right text-muted small"><i aria-hidden="true" class="fa fa-heart"></i></span>
-            </a>
           </div>
         </div>
       </div>
@@ -177,99 +166,6 @@ $faqSession = new Session($faqConfig);
         </div>
       </div>
 
-        <?php if ($user->perm->checkRight($user->getUserId(), 'editconfig')): ?>
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <i aria-hidden="true" class="fa fa-check"></i> <?= $PMF_LANG['ad_online_info']; ?>
-            </div>
-            <div class="card-body">
-                <?php
-                $version = Filter::filterInput(INPUT_POST, 'param', FILTER_SANITIZE_STRING);
-                if ($faqConfig->get('main.enableAutoUpdateHint') || (!is_null($version) && $version == 'version')) {
-                    $api = new Api($faqConfig, new System());
-                    try {
-                        $versions = $api->getVersions();
-                        printf(
-                            '<p class="alert alert-%s">%s <a href="https://www.phpmyfaq.de" target="_blank">phpmyfaq.de</a>: <strong>phpMyFAQ %s</strong>',
-                            (-1 == version_compare($versions['installed'], $versions['current'])) ? 'danger' : 'info',
-                            $PMF_LANG['ad_xmlrpc_latest'],
-                            $versions['current']
-                        );
-                        // Installed phpMyFAQ version is outdated
-                        if (-1 == version_compare($versions['installed'], $versions['current'])) {
-                            echo '<br>' . $PMF_LANG['ad_you_should_update'];
-                        }
-                    } catch (Exception $e) {
-                        printf('<p class="alert alert-danger">%s</p>', $e->getMessage());
-                    }
-                } else {
-                    ?>
-                  <form action="<?= $faqSystem->getSystemUri($faqConfig) ?>admin/index.php" method="post"
-                        accept-charset="utf-8">
-                    <input type="hidden" name="param" value="version"/>
-                    <button class="btn btn-info" type="submit">
-                        <?= $PMF_LANG['ad_xmlrpc_button'] ?>
-                    </button>
-                  </form>
-                    <?php
-                }
-                ?>
-            </div>
-          </div>
-
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <i aria-hidden="true" class="fa fa-certificate fa-fw"></i> <?= $PMF_LANG['ad_online_verification'] ?>
-            </div>
-            <div class="card-body">
-                <?php
-                $getJson = Filter::filterInput(INPUT_POST, 'getJson', FILTER_SANITIZE_STRING);
-                if (!is_null($getJson) && 'verify' === $getJson) {
-                    $api = new Api($faqConfig, new System());
-                    try {
-                        if (!$api->isVerified()) {
-                            echo '<p class="alert alert-danger">phpMyFAQ version mismatch - no verification possible.</p>';
-                        } else {
-                            $issues = $api->getVerificationIssues();
-                            if (1 < count($issues)) {
-                                printf('<p class="alert alert-danger">%s</p>', $PMF_LANG['ad_verification_notokay']);
-                                echo '<ul>';
-                                foreach ($issues as $file => $hash) {
-                                    if ('created' === $file) {
-                                        continue;
-                                    }
-                                    printf(
-                                        '<li><span class="pmf-popover" data-original-title="SHA-1" data-content="%s">%s</span></li>',
-                                        $hash,
-                                        $file
-                                    );
-                                }
-                                echo '</ul>';
-                            } else {
-                                printf('<p class="alert alert-success">%s</p>', $PMF_LANG['ad_verification_okay']);
-                            }
-                        }
-                    } catch (\Exception $e) {
-                        printf('<p class="alert alert-danger">%s</p>', $e->getMessage());
-                    }
-                } else {
-                    ?>
-                  <form action="<?= $faqSystem->getSystemUri($faqConfig) ?>admin/index.php" method="post"
-                        accept-charset="utf-8">
-                    <input type="hidden" name="getJson" value="verify"/>
-                    <button class="btn btn-info" type="submit">
-                        <?= $PMF_LANG['ad_verification_button'] ?>
-                    </button>
-                  </form>
-                    <?php
-                }
-                ?>
-              <script>$(function() {
-                  $('span[class="pmf-popover"]').popover();
-                });</script>
-            </div>
-          </div>
-        <?php endif; ?>
     </div>
 </section>
 

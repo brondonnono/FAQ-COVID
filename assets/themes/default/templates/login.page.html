@@ -71,12 +71,12 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="row">
-                  <div class="col-lg-6 mx-auto">
+                  <div class="col-lg-6 mx-auto bgclr">
                     <form class="form-signin" action="{{ writeLoginPath }}" method="post" role="form">
                       <div class="text-center mb-4">
                         <img
-                          class="mb-4 rounded"
-                          src="{{ baseHref }}assets/themes/{{ tplSetName }}/img/logo.png"
+                          class="mb-4 rounded taille"
+                          src="{{ baseHref }}assets/themes/{{ tplSetName }}/img/logo2.png"
                           alt="{{ header }}"
                         />
                         <h1 class="h3 mb-3 font-weight-normal">{{ loginPageMessage }} {{ header }}</h1>
@@ -85,8 +85,13 @@
                           <a href="{{ secureloginurl }}">{{ securelogintext }}</a>
                         </p>
                         [/useSslForLogins]
-
-                        <p>{{ loginMessage }}</p>
+                        <!--construire une zone d'alert-->
+                        <div id="toast-container" class="toast-top-center">
+                          <div class="toast toast-error" aria-live="assertive" style="opacity: 0.9;">
+                            <span class='alert_icon'></span>
+                            <div class="toast-message"> {{ loginMessage }} </div>
+                          </div>
+                        </div>                        
                       </div>
 
                       <div class="form-label-group">
@@ -120,16 +125,18 @@
                           {{ rememberMe }}
                         </label>
                       </div>
-                      <button class="btn btn-lg btn-primary btn-block" type="submit">{{ loginHeader }}</button>
+                      <button class="btn btn-lg btn-primary btn-tertiary btn-block" type="submit">{{ loginHeader }}</button>
                     </form>
                     <p class="mt-5 mb-3 text-center">
                       {{ sendPassword }} <br />
                       {{ registerUser }}
                     </p>
+                  <!--
                     <form action="{{ renderUri }}" method="post" accept-charset="utf-8" class="mt-5">
                       {{ switchLanguages }}
                       <input type="hidden" name="action" value="" />
                     </form>
+                  -->
                   </div>
                 </div>
               </div>

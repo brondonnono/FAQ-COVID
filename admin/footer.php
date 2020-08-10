@@ -34,12 +34,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
-      Proudly powered by <strong>phpMyFAQ <?= $faqConfig->get('main.currentVersion'); ?></strong> |
-      <a href="https://www.phpmyfaq.de/documentation" target="_blank">phpMyFAQ documentation</a> |
-      Follow us on <a href="http://twitter.com/phpMyFAQ">Twitter</a> |
-      <i aria-hidden="true" class="fa fa-apple"></i> Available on the
-      <a target="_blank" href="https://itunes.apple.com/app/phpmyfaq/id977896957">App Store</a> |
-      &copy; 2001-<?= date('Y') ?> <a href="https://www.phpmyfaq.de/" target="_blank">phpMyFAQ Team</a>
+      <strong>(c) Université de Dschang, 2020 </strong>
     </div>
   </div>
     <?php

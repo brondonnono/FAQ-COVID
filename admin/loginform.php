@@ -45,7 +45,7 @@ if ((isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) === 'ON') || !$fa
         <div class="col-lg-6 mx-auto">
           <div class="card rounded-0" id="login-form">
             <div class="card-header">
-              <h3 class="mb-0">phpMyFAQ Login</h3>
+              <h3 class="mb-0">FAQ-COVID19 Login</h3>
                 <?= $message ?>
             </div>
             <div class="card-body">
