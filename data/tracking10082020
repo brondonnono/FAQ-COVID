@@ -1,0 +1,5 @@
+1;new_session;0;::1;;http://localhost/FAQ-COVID/setup/index.php;Mozilla/5.0 (Windows NT 10.0, Win64, x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36;1597028118;
+2;new_session;0;::1;action=login;http://localhost/FAQ-COVID/index.php;Mozilla/5.0 (Windows NT 10.0, Win64, x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36;1597028123;
+3;login;0;::1;action=login;http://localhost/FAQ-COVID/index.php;Mozilla/5.0 (Windows NT 10.0, Win64, x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36;1597028123;
+4;new_session;0;::1;;http://localhost/FAQ-COVID/?action=login;Mozilla/5.0 (Windows NT 10.0, Win64, x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36;1597028129;
+5;new_session;0;::1;;http://localhost/FAQ-COVID/admin/?action=config&config_action=saveConfig;Mozilla/5.0 (Windows NT 10.0, Win64, x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36;1597029566;
